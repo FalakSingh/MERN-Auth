@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.login-page, .reg-page {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+#dark {
+  background-color: #333a40;
+}
+
+.navbar {
+  z-index: 1;
+  height: 70px;
+}
+
+.navbar-brand {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.3rem;
+}
+
+#dark .login-div, #dark .reg-div{
+  margin-top: 70px;
+  border: 2px solid #59636d;
+}
+
+.login-div, .reg-div {
+  margin-top: 70px;
+  border: 2px solid #232a36;
+  border-radius: 5%;
+  width: 500px;
+  height: 720px;
+  position: relative;
+}
+
+#dark .sign-in-here, #dark .reg-hello {
+  color: #96acc3;
+}
+
+.sign-in-here {
+  text-align: center;
+  margin-top: 130px;
+  font-weight: 900;
+}
+
+.reg-hello {
+  text-align: center;
+  margin-top: 70px;
+  font-weight: 900;
+}
+
+#dark .theme-mode {
+  color:#c0c7ce;
+}
+
+#dark .theme-mode:hover {
+  color: white;
+}
+
+.theme-mode {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin: 25px 25px;
+  transition: 200ms ease-in-out;
+}
+
+.theme-mode:hover {
+  color: #bdd0e4;
+  transform: rotate(20deg);
+}
+
+.login-input-fields, .reg-input-fields {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.reg-input-fields {
+  top: 55%
+}
+
+.sign-btn, .sign-up-btn {
+  width: auto;
+  position: relative;
+  bottom: -250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up-btn {
+  bottom: 0;
+}
+
+#dark .btn:hover {
+  background-color: #141618;
+}
+.btn {
+  width: 40%;
+}
+
+#dark .input-field input {
+  background: #333a40;
+  color:white;
+}
+
+#dark .input-field  label {
+  color:#7a8795;
+}
+
+.form-floating {
+  position: relative;
+  margin: auto;
+  width: 80%;
+  top: -30px;
+}
+
+#dark .form-control{
+  border: 2px solid #59636d;
+}
+
+#dark .form-control:focus {
+  border-color: #59636d;
+  box-shadow: inset 0 1px 1px rgba(120,133,147, 0.075), 0 0 8px rgb(90,100,110);
+}
+.form-control {
+  border: 2px solid #232a36;
+}
+.form-control:focus {
+  border-color: #424242;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(6, 5, 5);
+}
+
+#dark .show-icon {
+  color:#7a8795;
+}
+
+#dark .show-icon:hover {
+  color: white;
+}
+
+.show-icon {
+  cursor: pointer;
+  position: absolute;
+  bottom: 62px;
+  right: 62px;
+  transition: 300ms ease-in-out;
+}
+
+.show-icon:hover {
+  color: #bdd0e4;
+  font-size: larger;
+}
+#dark .register {
+  color: #6f7c88;
+}
+.register {
+  color:#a2a2a2;
+  position: relative;
+  text-align: center;
+  bottom: -350px;
+}
+#dark .reg-here, #dark .signIn {
+  color: #adb3ba;
+}
+
+#dark .reg-here:hover, #dark .signIn:hover{
+  color: #d6d6d6;
+}
+.reg-here {
+  color: #575757;
+  transition: 220ms ease-in-out;
+}
+
+.reg-here:hover, .signIn:hover {
+  color: #263238;
+  font-weight: 600;
+}
+
+.signIn {
+  position: relative;
+  left: 220px;
+  top: 20px;
+  color: #575757;
+  transition: 220ms ease-in-out;
+}
+
+.alert-popup {
+  width: 95%;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  top: 40px;
+}
