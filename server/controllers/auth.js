@@ -1,28 +1,7 @@
 const User = require("../models/users");
+const UserContent = require("../models/userContent")
 const sendEmail = require("../utils/sendEmail")
 const crypto = require("crypto")
-
-const register = async (req, res, next) => {
-  const { fName, lName, email, password } = req.body;
-  try {
-    const user = await User.create({
-      fName,
-      lName,
-      email,
-      password,
-    });
-    res.status(201).json({
-      success: true,
-    });
-  } catch (error) {
-    if (error.code == 79 || error.code == 11000) {
-      res.status(500).json({
-        success: false,
-        error: "Email Already exists",
-      });
-    }
-  }
-};
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -30,10 +9,12 @@ const login = async (req, res, next) => {
     const user = await User.findOne({ email }).select("password");
 
     if (!user) {
+      return(
       res.status(401).json({
         sucess: false,
         error: "Invalid Credentials",
-      });
+      })
+      );
     }
 
     const isMatch = await user.checkPass(password);
@@ -44,16 +25,18 @@ const login = async (req, res, next) => {
         error: "Invalid Credentials",
       });
     }
-
     sendToken(user, 201, res);
 
   } catch (error) {
-    return(
-    res.status(500).json({
-      success: false,
-      error: error.message,
-    })
-    )
+
+    console.log(error)
+
+    // return(
+    // res.status(500).json({
+    //   success: false,
+    //   error: error.message,
+    // })
+    // )
   }
 };
 
@@ -134,5 +117,5 @@ const sendToken = (user, statusCode, res) => {
 };
 
 
-module.exports = { register, login, forgotPass, resetPass };
+module.exports = { login, forgotPass, resetPass };
 

@@ -3,20 +3,20 @@ import { createContext, useEffect, useState } from "react";
 import { Register } from "./pages/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
+import PrivateRouter from "./Route/PrivateRouter";
 
 export const themeContext = createContext();
 
 function App() {
-
-
-  function postRequest(url, postBody){
+  function postRequest(url, postBody) {
     postBody = JSON.stringify(postBody);
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    axios.post(url, postBody, config)
+    axios
+      .post(url, postBody, config)
       .then(function (response) {
         console.log(response.data);
       })
@@ -24,13 +24,6 @@ function App() {
         console.log(error);
       });
   }
-
-
-
-
-
-
-
 
   useEffect(() => {
     if (window.localStorage.getItem("theme") == null) {
@@ -59,11 +52,23 @@ function App() {
     <themeContext.Provider value={theme}>
       <BrowserRouter>
         <Routes>
+          <PrivateRouter exact path="/userContent" element={userPage} />
           <Route
+            exact
             path="/"
-            element={<Login postRqst={postRequest} themeInput={themeFunction} theme={theme} />}
+            element={
+              <Login
+                postRqst={postRequest}
+                themeInput={themeFunction}
+                theme={theme}
+              />
+            }
           />
-          <Route path="/register" element={<Register postRqst={postRequest} theme={theme} />} />
+          <Route
+            exact
+            path="/register"
+            element={<Register postRqst={postRequest} theme={theme} />}
+          />
         </Routes>
       </BrowserRouter>
     </themeContext.Provider>
