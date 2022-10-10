@@ -4,11 +4,12 @@ export const InputField = (props) => {
       <input
         onChange={props.onChange}
         type={props.type}
-        className="form-control"
+        className= {`form-control ${props.className}`}
         placeholder={props.placeholder}
         name={props.name}
         id={props.name}
         required
+        value={props.value}
         minLength={props.min}
         maxLength={props.max}
         autoComplete="off"

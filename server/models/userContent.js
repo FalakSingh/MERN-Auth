@@ -29,3 +29,5 @@ const UserContentSchema = new mongoose.Schema({
 
 
 UserContent = mongoose.model("userContent", UserContentSchema, "userContent")
+
+module.exports = UserContent;

@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-.login-page, .reg-page {
+/* setting display to flex of all pages */
+.login-page,
+.reg-page,
+.forgot-page {
   margin: 0;
   position: absolute;
   top: 0;
@@ -13,10 +16,12 @@
   font-family: "Montserrat", sans-serif;
 }
 
+/* Color code for dark theme */
 #dark {
   background-color: #333a40;
 }
 
+/* Navbar */
 .navbar {
   z-index: 1;
   height: 70px;
@@ -27,44 +32,63 @@
   font-size: 2.3rem;
 }
 
-#dark .login-div, #dark .reg-div{
+/* Input Divs in Dark Mode */
+#dark .login-div,
+#dark .reg-div,
+#dark .forgot-pass-div {
   margin-top: 70px;
   border: 2px solid #59636d;
 }
-
-.login-div, .reg-div {
+/* Input Divs */
+.login-div,
+.reg-div {
   margin-top: 70px;
   border: 2px solid #232a36;
-  border-radius: 5%;
+  border-radius: 30px;
   width: 500px;
   height: 720px;
   position: relative;
 }
 
-#dark .sign-in-here, #dark .reg-hello {
+/* Login , Register Heading in Dark Mode */
+#dark .sign-in-here,
+#dark .reg-hello,
+#dark .forgot-div-heading {
   color: #96acc3;
 }
 
+/* Login Page heading */
 .sign-in-here {
   text-align: center;
   margin-top: 130px;
   font-weight: 900;
 }
 
+/* Alert Response */
+.login-alert, .register-alert {
+  width: 95%;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  top: 0px;
+}
+
+/* Register Page heading */
 .reg-hello {
   text-align: center;
   margin-top: 70px;
   font-weight: 900;
 }
 
+/* theme button color in dark mode */
 #dark .theme-mode {
-  color:#c0c7ce;
+  color: #c0c7ce;
 }
 
 #dark .theme-mode:hover {
   color: white;
 }
-
+/* Theme button */
 .theme-mode {
   cursor: pointer;
   position: absolute;
@@ -78,7 +102,9 @@
   transform: rotate(20deg);
 }
 
-.login-input-fields, .reg-input-fields {
+/* Input fields inside Input Divs */
+.login-input-fields,
+.reg-input-fields {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -87,10 +113,12 @@
 }
 
 .reg-input-fields {
-  top: 55%
+  top: 55%;
 }
 
-.sign-btn, .sign-up-btn {
+/* SignIn and SignUp buttons */
+.sign-btn,
+.sign-up-btn {
   width: auto;
   position: relative;
   bottom: -250px;
@@ -110,13 +138,14 @@
   width: 40%;
 }
 
+/* Input fields in dark mode */
 #dark .input-field input {
   background: #333a40;
-  color:white;
+  color: white;
 }
 
-#dark .input-field  label {
-  color:#7a8795;
+#dark .input-field label {
+  color: #7a8795;
 }
 
 .form-floating {
@@ -126,13 +155,14 @@
   top: -30px;
 }
 
-#dark .form-control{
+#dark .form-control {
   border: 2px solid #59636d;
 }
 
 #dark .form-control:focus {
   border-color: #59636d;
-  box-shadow: inset 0 1px 1px rgba(120,133,147, 0.075), 0 0 8px rgb(90,100,110);
+  box-shadow: inset 0 1px 1px rgba(120, 133, 147, 0.075),
+    0 0 8px rgb(90, 100, 110);
 }
 .form-control {
   border: 2px solid #232a36;
@@ -142,8 +172,9 @@
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(6, 5, 5);
 }
 
+/* Show password icon */
 #dark .show-icon {
-  color:#7a8795;
+  color: #7a8795;
 }
 
 #dark .show-icon:hover {
@@ -162,32 +193,54 @@
   color: #bdd0e4;
   font-size: larger;
 }
+/* Forgot Password */
+.forgot-pass {
+  position: absolute;
+  bottom: 300px;
+  right: 52px;
+}
+
+/* Register Div */
 #dark .register {
   color: #6f7c88;
 }
+
+/* Register Alert */
+.register-alert {
+  top: 40px;
+}
 .register {
-  color:#a2a2a2;
+  color: #a2a2a2;
   position: relative;
   text-align: center;
   bottom: -350px;
 }
-#dark .reg-here, #dark .signIn {
+/* register and sign and forgot pass links */
+#dark .reg-here,
+#dark .signIn,
+#dark .forgot-pass {
   color: #adb3ba;
 }
 
-#dark .reg-here:hover, #dark .signIn:hover{
+#dark .reg-here:hover,
+#dark .signIn:hover,
+#dark .forgot-pass:hover {
   color: #d6d6d6;
 }
-.reg-here {
+.reg-here,
+.forgot-pass {
   color: #575757;
   transition: 220ms ease-in-out;
 }
 
-.reg-here:hover, .signIn:hover {
+.reg-here:hover,
+.signIn:hover,
+.forgot-pass:hover {
   color: #263238;
   font-weight: 600;
 }
 
+/* SignIn Button */
 .signIn {
   position: relative;
   left: 220px;
@@ -196,10 +249,79 @@
   transition: 220ms ease-in-out;
 }
 
-.alert-popup {
-  width: 95%;
-  margin: auto;
+/* Forgot Password Div */
+.forgot-pass-div {
+  border: 2px solid #232a36;
+  border-radius: 30px;
+  width: 500px;
+  height: 300px;
+}
+
+/* Forgot password page big Heading */
+.forgot-big-div {
+  position: absolute;
+  top: 150px;
+}
+/* .forgot-big-heading {
+  display: block;
+  position: absolute;
+  top: 200px;
+  left:28%
+} */
+
+/* Forgot Password Div Heading */
+.forgot-div-heading {
+  font-size: 1.5rem;
   position: relative;
   text-align: center;
-  top: 40px;
+  top: 60px;
+}
+/* forgot pass input */
+.forgot-pass-input {
+  margin-top: 130px;
+}
+/* Forgot Password Submit Button */
+.forgot-pass-btn {
+  margin-left: 30%;
+}
+
+/* Media queries for smaller devices */
+@media (max-width: 500px) {
+  .login-div,
+  .reg-div {
+    width: 380px;
+    height: 620px;
+  }
+
+  .forgot-pass {
+    bottom: 250px;
+    right: 37px;
+  }
+
+  .register {
+    bottom: -280px;
+  }
+
+  .reg-heading {
+    position: relative;
+    top: -30px;
+  }
+
+  .signIn {
+    left: 160px;
+  }
+
+  .forgot-pass-div {
+    width: 350px;
+  }
+
+  .forgot-pass-btn {
+    margin-top: -50px;
+  }
+}
+
+@media (max-width: 800px) {
+  .forgot-big-heading {
+    text-align: justify;
+  }
 }

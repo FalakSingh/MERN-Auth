@@ -2,29 +2,15 @@ import Login from "./pages/Login";
 import { createContext, useEffect, useState } from "react";
 import { Register } from "./pages/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import axios from "axios";
 import PrivateRouter from "./Route/PrivateRouter";
+import userPage from "./pages/userPage";
+import ForgotPasswd from "./pages/ForgotPasswd";
+
 
 export const themeContext = createContext();
 
 function App() {
-  function postRequest(url, postBody) {
-    postBody = JSON.stringify(postBody);
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    axios
-      .post(url, postBody, config)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
+  
   useEffect(() => {
     if (window.localStorage.getItem("theme") == null) {
       window.localStorage.setItem("theme", false);
@@ -52,13 +38,12 @@ function App() {
     <themeContext.Provider value={theme}>
       <BrowserRouter>
         <Routes>
-          <PrivateRouter exact path="/userContent" element={userPage} />
+          {/* <PrivateRouter exact path="/userContent" element={userPage} /> */}
           <Route
             exact
             path="/"
             element={
               <Login
-                postRqst={postRequest}
                 themeInput={themeFunction}
                 theme={theme}
               />
@@ -67,8 +52,9 @@ function App() {
           <Route
             exact
             path="/register"
-            element={<Register postRqst={postRequest} theme={theme} />}
+            element={<Register theme={theme} />}
           />
+          <Route exact path="/forgotPasswd" element={<ForgotPasswd theme={theme} />} />
         </Routes>
       </BrowserRouter>
     </themeContext.Provider>

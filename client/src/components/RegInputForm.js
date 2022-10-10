@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InputField } from "../components/InputField";
 import { Link } from "react-router-dom";
 import { RedAlert } from "../components/alert";
 
 export const RegInputForm = (props) => {
-  const [alertMessage, setAlert] = useState(false);
+  useEffect(() => {
+    if (props.alertMsg) {
+      const alertMessage = props.alertMsg;
+      setAlert({
+        alertVal: "true",
+        alertMessage: alertMessage
+      });
+
+    }
+  }, [props.alertMsg]);
+
+  const [alertObject, setAlert] = useState({
+    alertVal: false,
+    alertMessage: "",
+  });
   const [inputs, setInputs] = useState({
     fName: "",
     lName: "",
@@ -13,7 +27,9 @@ export const RegInputForm = (props) => {
     confirmPass: "",
   });
 
+  // Setting Input values
   function handleInput(event) {
+    setAlert({ alertVal: false, alertMessage: "" });
     const { name, value } = event.target;
     setInputs((prevValue) => {
       return {
@@ -23,25 +39,40 @@ export const RegInputForm = (props) => {
     });
   }
 
+  //Function to handle form submit and check if the passwords are the same.
   function handleSubmit(event) {
     event.preventDefault();
     if (inputs.password === inputs.confirmPass) {
       props.submitClicked(inputs);
     } else {
-      setAlert(true);
+      setAlert({
+        alertVal: true,
+        alertMessage: "Passwords doesn't Match",
+      });
+      setInputs({
+        fName: "",
+        lName: "",
+        email: "",
+        password: "",
+        confirmPass: "",
+      });
     }
   }
 
   return (
     <div>
-      {alertMessage ? (
-        <RedAlert alertText="Passwords doesn't Match" />
-      ) : (
-        <h1 className="reg-hello">
-          {" "}
-          Hello {inputs.fName} {inputs.lName}{" "}
-        </h1>
-      )}
+      <div className="reg-heading">
+        {alertObject.alertVal ? (
+          <RedAlert
+            className="register-alert"
+            alertText={alertObject.alertMessage}
+          />
+        ) : (
+          <h1 className="reg-hello">
+            Hello {inputs.fName} {inputs.lName}{" "}
+          </h1>
+        )}
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="reg-input-fields">
@@ -52,6 +83,7 @@ export const RegInputForm = (props) => {
             placeholder="First Name"
             min="1"
             max="20"
+            value={inputs.fName}
           />
           <InputField
             onChange={handleInput}
@@ -60,6 +92,7 @@ export const RegInputForm = (props) => {
             placeholder="Last Name"
             min="1"
             max="20"
+            value={inputs.lName}
           />
           <InputField
             onChange={handleInput}
@@ -68,6 +101,7 @@ export const RegInputForm = (props) => {
             placeholder="Email Address"
             min="8"
             max="30"
+            value={inputs.email}
           />
           <InputField
             onChange={handleInput}
@@ -76,6 +110,7 @@ export const RegInputForm = (props) => {
             placeholder="Password"
             min="8"
             max="30"
+            value={inputs.password}
           />
           <InputField
             onChange={handleInput}
@@ -84,6 +119,7 @@ export const RegInputForm = (props) => {
             placeholder="Confirm Password"
             min="8"
             max="30"
+            value={inputs.confirmPass}
           />
           <div className="sign-up-btn">
             <button type="submit" className="btn btn-dark">

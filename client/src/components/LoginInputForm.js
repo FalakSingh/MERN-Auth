@@ -32,20 +32,20 @@ export default function LoginInputForm(props) {
   return (
     <form onSubmit={formSubmit}>
       <div className="login-input-fields">
-      <InputField
-        onChange={handleInput}
-        name="email"
-        type="email"
-        placeholder="Email Address"
-        max="30"
-      />
-      <InputField
-        onChange={handleInput}
-        name="password"
-        type={showStatus ? "text" : "password"}
-        placeholder="Password"
-        max="30"
-      />
+        <InputField
+          onChange={handleInput}
+          name="email"
+          type="email"
+          placeholder="Email Address"
+          max="30"
+        />
+        <InputField
+          onChange={handleInput}
+          name="password"
+          type={showStatus ? "text" : "password"}
+          placeholder="Password"
+          max="30"
+        />
         <span
           onClick={() => {
             setStatus(!showStatus);
