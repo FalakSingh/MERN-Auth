@@ -19,7 +19,7 @@ export const Register = (props) => {
       .then(function (response) {
         const {success, data} = response.data;
         if(success){
-          alert(data)
+          alert(data);
           navigate("/")
         }
       })

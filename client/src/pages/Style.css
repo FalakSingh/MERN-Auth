@@ -242,7 +242,7 @@
 
 /* SignIn Button */
 .signIn {
-  position: relative;
+  position: absolute;
   left: 220px;
   top: 20px;
   color: #575757;
