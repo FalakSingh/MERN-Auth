@@ -4,11 +4,21 @@ import RegHere from "../components/RegHere";
 import NavBar from "../components/Navbar";
 import ThemeButton from "../components/ThemeButton";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { RedAlert } from "../components/alert";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Login(props) {
+  useEffect(() => {
+    const authToken = window.localStorage.getItem("authToken");
+    const isLogged = window.localStorage.getItem("isLogged");
+    if (authToken && isLogged) {
+      naviagteToUserPage(true, authToken)
+    }
+  }, []);
+
+  const navigate = useNavigate();
+
   const [responseAlert, setResponseAlert] = useState({
     resVal: false,
     resAlert: "",
@@ -19,10 +29,11 @@ function Login(props) {
     axios
       .post(url, credentials)
       .then(function (response) {
-        console.log(response);
         const { success, token } = response.data;
         if (success) {
-          alert(token);
+          window.localStorage.setItem("authToken", token);
+          window.localStorage.setItem("isLogged", success);
+          naviagteToUserPage(success, token);
         }
       })
       .catch(function (err) {
@@ -31,6 +42,14 @@ function Login(props) {
           handleRes(error);
         }
       });
+  }
+
+  function naviagteToUserPage(success, token) {
+    props.loginRes({
+      isLogged: success,
+      authToken: token,
+    });
+    navigate("/userPage");
   }
 
   function handleRes(errorResponse) {

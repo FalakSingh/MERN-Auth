@@ -6,7 +6,6 @@ const crypto = require("crypto");
 const register = async (req, res, next) => {
   const { fName, lName, email, password } = req.body;
 
-
   try {
     const user = await User.create({
       fName,
@@ -80,7 +79,7 @@ const forgotPass = async (req, res, next) => {
 
     await user.save();
 
-    const resetUrl = `http://localhost:3001/resetPass/${resetToken}`;
+    const resetUrl = `http://localhost:3001/resetPasswd/${resetToken}`;
 
     try {
       sendEmail({
@@ -122,10 +121,11 @@ const resetPass = async (req, res, next) => {
       });
     }
 
-    (user.password = req.body.password),
-      (user.resetPassToken = undefined),
-      (user.resetPassExpires = undefined),
-      await user.save();
+    user.password = req.body.password;
+    user.resetPassToken = undefined;
+    user.resetPassExpires = undefined;
+    
+    await user.save();
 
     res.status(201).json({
       success: true,

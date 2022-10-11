@@ -28,7 +28,7 @@ const ForgotPasswd = (props) => {
               onChange={(event) => {
                 setEmail(event.target.value);
               }}
-              className="forgot-pass-input form-control"
+              className="forgot-pass-input"
               placeholder="Email Address"
               label="Email Address"
               min="8"

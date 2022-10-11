@@ -3,8 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import { Register } from "./pages/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PrivateRouter from "./Route/PrivateRouter";
-import userPage from "./pages/userPage";
+import UserPage from "./pages/UserPage";
 import ForgotPasswd from "./pages/ForgotPasswd";
+import ResetPass from "./pages/ResetPass";
 
 
 export const themeContext = createContext();
@@ -23,6 +24,7 @@ function App() {
   }, []);
 
   const [theme, setTheme] = useState();
+  const [loginResponse, setLoginResponse] = useState({isLogged:false, authToken:""});
   function themeFunction(themeVal) {
     setTheme(themeVal);
     function storedTheme() {
@@ -33,17 +35,21 @@ function App() {
 
     storedTheme();
   }
-
   return (
     <themeContext.Provider value={theme}>
       <BrowserRouter>
         <Routes>
-          {/* <PrivateRouter exact path="/userContent" element={userPage} /> */}
+        <Route element={<PrivateRouter loginResponse={loginResponse} />} >
+        <Route exact path ="/userPage" element={<UserPage />} />
+        </Route>
           <Route
             exact
             path="/"
             element={
               <Login
+                loginRes={(loginResObj) => {
+                  setLoginResponse(loginResObj)
+                }}
                 themeInput={themeFunction}
                 theme={theme}
               />
@@ -55,6 +61,7 @@ function App() {
             element={<Register theme={theme} />}
           />
           <Route exact path="/forgotPasswd" element={<ForgotPasswd theme={theme} />} />
+          <Route exact path="/resetPasswd/:resetToken" element={<ResetPass theme={theme} />} />
         </Routes>
       </BrowserRouter>
     </themeContext.Provider>

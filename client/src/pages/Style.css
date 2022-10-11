@@ -3,7 +3,8 @@
 /* setting display to flex of all pages */
 .login-page,
 .reg-page,
-.forgot-page {
+.forgot-page,
+.reset-page {
   margin: 0;
   position: absolute;
   top: 0;
@@ -35,7 +36,8 @@
 /* Input Divs in Dark Mode */
 #dark .login-div,
 #dark .reg-div,
-#dark .forgot-pass-div {
+#dark .forgot-pass-div,
+#dark .reset-div {
   margin-top: 70px;
   border: 2px solid #59636d;
 }
@@ -65,7 +67,8 @@
 }
 
 /* Alert Response */
-.login-alert, .register-alert {
+.login-alert,
+.register-alert {
   width: 95%;
   margin: auto;
   position: relative;
@@ -262,12 +265,6 @@
   position: absolute;
   top: 150px;
 }
-/* .forgot-big-heading {
-  display: block;
-  position: absolute;
-  top: 200px;
-  left:28%
-} */
 
 /* Forgot Password Div Heading */
 .forgot-div-heading {
@@ -283,6 +280,25 @@
 /* Forgot Password Submit Button */
 .forgot-pass-btn {
   margin-left: 30%;
+}
+
+/* Reset Div */
+.reset-div {
+  border: 2px solid #232a36;
+  border-radius: 30px;
+  width: 380px;
+  height: 300px;
+  text-align: center;
+}
+
+.reset-div-input {
+  position: relative;
+  top: 80px;
+}
+
+.reset-pass-btn {
+  position: relative;
+  top:60px;
 }
 
 /* Media queries for smaller devices */
