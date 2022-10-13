@@ -54,14 +54,13 @@ const login = async (req, res, next) => {
     }
     sendToken(user, 201, res);
   } catch (error) {
-    console.log(error);
 
-    // return(
-    // res.status(500).json({
-    //   success: false,
-    //   error: error.message,
-    // })
-    // )
+    return(
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+    )
   }
 };
 
@@ -113,7 +112,7 @@ const resetPass = async (req, res, next) => {
       resetToken,
       resetPassExpires: { $gt: Date.now() },
     });
-    console.log(user);
+    
     if (!user) {
       return res.status(400).json({
         success: false,
